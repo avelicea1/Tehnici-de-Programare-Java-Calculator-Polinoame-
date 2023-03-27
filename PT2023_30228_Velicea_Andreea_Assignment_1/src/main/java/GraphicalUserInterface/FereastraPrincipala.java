@@ -31,6 +31,7 @@ public class FereastraPrincipala extends JFrame {
         textFieldPolinom1.setBounds(100, 20, 300, 40);
         getContentPane().add(textFieldPolinom1);
         textFieldPolinom1.setColumns(10);
+        //am adaugat acest buton pentru a putea fi memorat primul polinom
 
         final Polinom polinom1 = new Polinom();
         JButton btnNewButtonAdugaPolinom1 = new JButton("Adauga Polinom 1 ");
@@ -56,6 +57,8 @@ public class FereastraPrincipala extends JFrame {
         getContentPane().add(textFieldPolinom2);
         textFieldPolinom2.setColumns(10);
         final Polinom polinom2 = new Polinom();
+
+        //am adaugat acest buton pentru a putea fi memorat al doilea polinom
         JButton btnNewButtonAdugaPolinom2 = new JButton("Adauga Polinom 2 ");
         btnNewButtonAdugaPolinom2.setBackground(new Color(250,204,80));
         btnNewButtonAdugaPolinom2.addActionListener(new ActionListener() {
@@ -80,6 +83,7 @@ public class FereastraPrincipala extends JFrame {
         lblNewLabel_1.setBounds(15,80 , 70, 15);
         getContentPane().add(lblNewLabel_1);
 
+        //am adaugat acest buton pentru a putea fi resetate polinoamele si a se putea insera din nou
         JButton btnNewButtonClear = new JButton("Insereaza din nou");
         btnNewButtonClear.setBackground(new Color(250,204,80));
         btnNewButtonClear.addActionListener(new ActionListener() {
@@ -94,6 +98,7 @@ public class FereastraPrincipala extends JFrame {
         btnNewButtonClear.setBounds(250, 350, 200, 40);
         getContentPane().add(btnNewButtonClear);
 
+        //am adaugat acest buton pentru a se efectua operatia de adunare
         JButton btnNewButton = new JButton("ADUNARE");
         btnNewButton.setBackground(new Color(250,204,80));
         btnNewButton.addActionListener(new ActionListener() {
@@ -105,6 +110,7 @@ public class FereastraPrincipala extends JFrame {
         btnNewButton.setBounds(20, 200, 150, 30);
         getContentPane().add(btnNewButton);
 
+        //am adaugat acest buton pentru a se efectua operatia de scadere
         JButton btnNewButton_1 = new JButton("SCADERE");
         btnNewButton_1.setBackground(new Color(250,204,80));
         btnNewButton_1.addActionListener(new ActionListener() {
@@ -116,6 +122,8 @@ public class FereastraPrincipala extends JFrame {
         btnNewButton_1.setBounds(20, 250, 150, 30);
         getContentPane().add(btnNewButton_1);
 
+        //am adaugat acest buton pentru a se efectua operatia de inmultire
+
         JButton btnNewButton_2 = new JButton("INMULTIRE");
         btnNewButton_2.setBackground(new Color(250,204,80));
         btnNewButton_2.addActionListener(new ActionListener() {
@@ -126,6 +134,8 @@ public class FereastraPrincipala extends JFrame {
         });
         btnNewButton_2.setBounds(20, 300, 150, 30);
         getContentPane().add(btnNewButton_2);
+
+        //am adaugat acest buton pentru a se efectua operatia de impartire
 
         JButton btnNewButton_3 = new JButton("IMPARTIRE");
         btnNewButton_3.setBackground(new Color(250,204,80));
@@ -162,6 +172,8 @@ public class FereastraPrincipala extends JFrame {
         btnNewButton_3.setBounds(20, 350, 150, 30);
         getContentPane().add(btnNewButton_3);
 
+        //am adaugat acest buton pentru a se efectua operatia de derivare
+
         JButton btnNewButton_4 = new JButton("DERIVARE P1");
         btnNewButton_4.setBackground(new Color(250,204,80));
         btnNewButton_4.addActionListener(new ActionListener() {
@@ -183,6 +195,8 @@ public class FereastraPrincipala extends JFrame {
         });
         btnNewButton_5.setBounds(510, 250, 150, 30);
         getContentPane().add(btnNewButton_5);
+
+        //am adaugat acest buton pentru a se efectua operatia de integrare
 
         JButton btnNewButton_6 = new JButton("INTEGRARE P1");
         btnNewButton_6.setBackground(new Color(250,204,80));
@@ -248,6 +262,10 @@ public class FereastraPrincipala extends JFrame {
 
         return false;
     }
+    // am folosit aceasta metoda pentru transformarea string-ului din textField-ul reprezentativ fiecarui polinom
+    // intr-un polinom. Am folosit expresiile regulate: Pattern, unde am folosit un regex pentru identificare
+    // tiparului pe care vrem sa l respecte fiecare polinom si Matcher pentru a vedea daca se regasesc regex-ul in
+    // fiecare textField.
     void parsePolinom (String input,Polinom polinom) {
         Pattern p = Pattern.compile("([+-]?\\d*[.]?\\d?)[x](\\^(\\d+))?|([+-]?\\d+)");
         Matcher m = p.matcher(input);

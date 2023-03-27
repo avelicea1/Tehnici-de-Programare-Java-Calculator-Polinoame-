@@ -8,6 +8,9 @@ import java.util.Map;
 
 public class Operatii {
 
+    //am implementat operatie de adunare parcurgand primul polinom si verificand daca se regasesc monoame de acelasi grad si in
+    //cel de-al doilea polinom si am adunat coeficientii corespunzatori lor, iar apoi am parcurs fiecare polinom
+    //si am adaugat la rezultat monoamele care nu au gradul comun.
     public Polinom adunaPolinoame(Polinom polinom1, Polinom polinom2){
         Polinom rezultat = new Polinom();
         if(polinom2.getMonoame().size()==0 && polinom1.getMonoame().size()==0)rezultat.addMonom(new Monom(0,0));
@@ -29,6 +32,9 @@ public class Operatii {
         }
         return rezultat;
     }
+    //am implementat operatie de scadere parcurgand primul polinom si verificand daca se regasesc monoame de acelasi grad si in
+    //cel de-al doilea polinom si am scazut coeficientii corespunzatori lor, iar apoi am parcurs fiecare polinom
+    //si am adaugat la rezultat monoamele care nu au gradul comun.
     public Polinom scadePolinoame(Polinom polinom1,Polinom polinom2){
         Polinom rezultat = new Polinom();
         if(polinom2.getMonoame().size()==0 && polinom1.getMonoame().size()==0)rezultat.addMonom(new Monom(0,0));
@@ -50,7 +56,7 @@ public class Operatii {
         }
         return rezultat;
     }
-
+    //am parcurg ambele polinoame si am inmultit fiecare monom din polinomul 1 cu fiecare monom din polinomul 2
     public Polinom inmultestePolinoame(Polinom polinom1,Polinom polinom2){
         Polinom rezultat = new Polinom();
         if(polinom2.getMonoame().size()==0 && polinom1.getMonoame().size()==0)rezultat.addMonom(new Monom(0,0));
@@ -69,6 +75,7 @@ public class Operatii {
         }
         return rezultat;
     }
+    // functia este folosita la calcularea impartirii si calculeaza gradul cel mai mare din polinom
     public int grad(Polinom polinom){
         int grad = -1;
         for(Map.Entry<Integer,Double> entry: polinom.getMonoame().entrySet()){
@@ -80,6 +87,7 @@ public class Operatii {
         }
         return grad;
     }
+    //functia este folosita la impartire si extrage monomul cu cel mai mare grad, adica primul
     public Monom cautaMaxim(Polinom polinom){
         int i=0;
         Monom monom = new Monom(0,0);
@@ -94,6 +102,11 @@ public class Operatii {
         }
         return monom;
     }
+    //am realizat impartirea efectuand operatii de scadere si inmultire. Am impartit primul monom din primul polinom
+    //la primul monom din al doilea polinom. Apoi am inmultit rezultatul impartirii cu polinomul 2 si l am scazut din
+    //polinomul 1. Am efectuat aceasta operatie pana cand gradul deimpartitului este mai mic decat gradul impartitorului
+    //actualizand mereu catul cu suma rezultatelor impartirii polinomului 1 la polinomul 2 si actualizand restul
+    //cu rezultatul in urma scaderii din polinomul 1 a impartirii efectuate intre cat si polinom 2
     public ArrayList<Polinom> impartePolinoame(Polinom polinom1, Polinom polinom2)throws Exception{
         ArrayList<Polinom>rezultat = new ArrayList<Polinom>();
         if(polinom2.getMonoame().size()==0 || polinom1.getMonoame().size()==0)throw new Exception("nu se pot imparti doua polinoame nule!");
@@ -119,6 +132,7 @@ public class Operatii {
         rezultat.add(rest);
         return rezultat;
     }
+    //am parcurs fiecare monom si am efectuat derivarea
     public Polinom derivarePolinom(Polinom polinom){
 
         Polinom rezultat = new Polinom();
@@ -133,6 +147,7 @@ public class Operatii {
         }
         return rezultat;
     }
+    //am parcurs fiecare monom si am efectuat integrarea
     public Polinom integrarePolinom(Polinom polinom){
         Polinom rezultat = new Polinom();
         if(polinom.getMonoame().size()==0 )rezultat.addMonom(new Monom(0,0));

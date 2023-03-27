@@ -95,6 +95,7 @@ public class Operatii {
     public ArrayList<Polinom> impartePolinoame(Polinom polinom1, Polinom polinom2)throws Exception{
         ArrayList<Polinom>rezultat = new ArrayList<Polinom>();
         if(polinom2.getMonoame().size()==0 || polinom1.getMonoame().size()==0)throw new Exception("nu se pot imparti doua polinoame nule!");
+        if(polinom2.getMonoame().size()==1&&polinom2.getMonoame().firstEntry().getValue()==0)throw new Exception();
         Polinom cat = new Polinom();
         Polinom rest = polinom1;
 

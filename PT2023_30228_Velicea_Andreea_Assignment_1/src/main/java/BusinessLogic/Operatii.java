@@ -54,6 +54,8 @@ public class Operatii {
     public Polinom inmultestePolinoame(Polinom polinom1,Polinom polinom2){
         Polinom rezultat = new Polinom();
         if(polinom2.getMonoame().size()==0 && polinom1.getMonoame().size()==0)rezultat.addMonom(new Monom(0,0));
+        if(polinom1.getMonoame().size()==0 && polinom2.getMonoame().size()!=0)rezultat.setMonoame(polinom2.getMonoame());
+        if(polinom1.getMonoame().size()!=0 && polinom2.getMonoame().size()==0)rezultat.setMonoame(polinom1.getMonoame());
         for(Map.Entry<Integer,Double> entry1: polinom1.getMonoame().entrySet()){
             for(Map.Entry<Integer,Double> entry2: polinom2.getMonoame().entrySet()){
                 Monom monom = new Monom(entry1.getValue()*entry2.getValue(),entry1.getKey()+entry2.getKey());

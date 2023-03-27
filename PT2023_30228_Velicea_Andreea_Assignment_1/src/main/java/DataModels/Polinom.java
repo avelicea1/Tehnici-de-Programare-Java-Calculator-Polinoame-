@@ -127,6 +127,9 @@ public class Polinom {
                 k++;
             }
         }
+        if(rezultat == ""){
+            rezultat+="0";
+        }
         return rezultat;
     }
 
